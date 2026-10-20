@@ -14,7 +14,6 @@ import lombok.Data;
 public class SobreMimModel {
 
     @Id
-    @OneToOne(mappedBy = "sobreMimModel")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String nome;

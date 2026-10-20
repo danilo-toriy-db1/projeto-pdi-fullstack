@@ -14,7 +14,6 @@ import lombok.Data;
 public class Objetivo {
 
     @Id
-    @OneToOne(mappedBy = "objetivo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String objetivo;

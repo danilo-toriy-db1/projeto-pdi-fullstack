@@ -14,7 +14,6 @@ import lombok.Data;
 public class Desgosto {
 
     @Id
-    @OneToOne(mappedBy = "desgosto")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String desgosto;
