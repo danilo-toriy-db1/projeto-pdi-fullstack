@@ -1,0 +1,15 @@
+{
+  "artifactLanguage": "pt",
+  "workMode": "maintenance",
+  "discoveryAnswers": {
+    "systemType": "backend que receberá informações do front para persistir no banco de dados, sendo apenas uma api",
+    "scope": {
+      "type": "whole_project"
+    },
+    "restrictions": [
+      "Manter banco já cadastrado",
+      "Manter padrões do projeto já existentes",
+      "Sem segurança a princípio, será implementado posteriormente"
+    ]
+  }
+}
