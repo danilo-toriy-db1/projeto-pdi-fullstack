@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-public abstract class DefaultCrudController<DTO> {
+public interface DefaultCrudController<DTO> {
     @PostMapping
-    public abstract ResponseEntity<DTO> save (@RequestBody DTO dto);
+    ResponseEntity<DTO> save (@RequestBody DTO dto);
 
     @GetMapping
-    public abstract ResponseEntity<List<DTO>> findAll();
+    ResponseEntity<List<DTO>> findAll();
 
     @GetMapping("/{id}")
-    public abstract ResponseEntity<DTO> findById(@PathVariable Long id);
+    ResponseEntity<DTO> findById(@PathVariable Long id);
 
     @PutMapping("/{id}")
-    public abstract ResponseEntity<DTO> update(@PathVariable Long id, @RequestBody DTO dto);
+    ResponseEntity<DTO> update(@PathVariable Long id, @RequestBody DTO dto);
 
     @DeleteMapping("/{id}")
-    public abstract ResponseEntity<Void> deleteById(@PathVariable Long id);
+    ResponseEntity<Void> deleteById(@PathVariable Long id);
 }

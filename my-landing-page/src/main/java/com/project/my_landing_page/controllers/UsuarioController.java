@@ -18,17 +18,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
-public class UsuarioController extends DefaultCrudController<UsuarioDTO>{
+public class UsuarioController implements DefaultCrudController<UsuarioDTO>{
 
     @Autowired
     private UsuarioService usuarioService;
 
+    @Override
     @PostMapping
     public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO){
         Usuario usuario = usuarioService.saveUsuario(UsuarioDTO.toEntity(usuarioDTO));
         return ResponseEntity.ok(UsuarioDTO.fromEntity(usuario));
     }
 
+    @Override
     @GetMapping
     public ResponseEntity<List<UsuarioDTO>> findAll(){
         List<Usuario> usuarios = usuarioService.findAllUsuarios();
@@ -37,6 +39,7 @@ public class UsuarioController extends DefaultCrudController<UsuarioDTO>{
                 .toList());
     }
 
+    @Override
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id){
         return usuarioService.findUsuarioById(id)
@@ -44,6 +47,7 @@ public class UsuarioController extends DefaultCrudController<UsuarioDTO>{
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @Override
     @PutMapping("/{id}")
     public ResponseEntity<UsuarioDTO> update(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO){
         Usuario updatedUsuario = usuarioService.updateUsuario(id, UsuarioDTO.toEntity(usuarioDTO));
@@ -53,10 +57,10 @@ public class UsuarioController extends DefaultCrudController<UsuarioDTO>{
         return ResponseEntity.ok(UsuarioDTO.fromEntity(updatedUsuario));
     }
 
+    @Override
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
         usuarioService.deleteByIdUsuario(id);
         return ResponseEntity.noContent().build();
     }
-
 }
