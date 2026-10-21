@@ -18,19 +18,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
-public class UsuarioController {
+public class UsuarioController extends DefaultCrudController<UsuarioDTO>{
 
     @Autowired
     private UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<UsuarioDTO> saveUsuario (@RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<UsuarioDTO> save(@RequestBody UsuarioDTO usuarioDTO){
         Usuario usuario = usuarioService.saveUsuario(UsuarioDTO.toEntity(usuarioDTO));
         return ResponseEntity.ok(UsuarioDTO.fromEntity(usuario));
     }
 
     @GetMapping
-    public ResponseEntity<List<UsuarioDTO>> findAllUsuarios(){
+    public ResponseEntity<List<UsuarioDTO>> findAll(){
         List<Usuario> usuarios = usuarioService.findAllUsuarios();
         return ResponseEntity.ok(usuarios.stream()
                 .map(UsuarioDTO::fromEntity)
@@ -38,14 +38,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UsuarioDTO> findUsuarioById(@PathVariable Long id){
+    public ResponseEntity<UsuarioDTO> findById(@PathVariable Long id){
         return usuarioService.findUsuarioById(id)
                 .map(usuario -> ResponseEntity.ok(UsuarioDTO.fromEntity(usuario)))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioDTO> updateUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<UsuarioDTO> update(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO){
         Usuario updatedUsuario = usuarioService.updateUsuario(id, UsuarioDTO.toEntity(usuarioDTO));
         if (updatedUsuario == null){
             return ResponseEntity.notFound().build();
@@ -54,7 +54,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUsuarioById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteById(@PathVariable Long id){
         usuarioService.deleteByIdUsuario(id);
         return ResponseEntity.noContent().build();
     }
