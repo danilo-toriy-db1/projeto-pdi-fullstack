@@ -24,5 +24,4 @@ public record UsuarioDTO(Long id, String usuario, String senha, Timestamp data_c
                 usuarioDTO.role()
         );
     }
-
 }

@@ -5,32 +5,18 @@ import com.project.my_landing_page.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
-public class UsuarioService {
+public class UsuarioService extends DefaultServiceImpl<Usuario> {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario saveUsuario(Usuario usuario){
-        return usuarioRepository.save(usuario);
+    protected UsuarioService(UsuarioRepository repository) {
+        super(repository);
     }
 
-    public List<Usuario> findAllUsuarios(){
-        return usuarioRepository.findAll();
-    }
-
-    public Optional<Usuario> findUsuarioById(Long id){
-        return usuarioRepository.findById(id);
-    }
-
-    public void deleteByIdUsuario(Long id){
-        usuarioRepository.deleteById(id);
-    }
-
-    public Usuario updateUsuario(Long id, Usuario usuario){
+    @Override
+    public Usuario update(Long id, Usuario usuario){
         Usuario existingUsuario = usuarioRepository.findById(id).orElse(null);
         if(existingUsuario == null){
             return null;
