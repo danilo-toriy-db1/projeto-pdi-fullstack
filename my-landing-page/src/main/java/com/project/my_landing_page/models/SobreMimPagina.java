@@ -7,9 +7,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "sobre_mim_pagina", schema = "landing_pages")
 public class SobreMimPagina {
@@ -19,8 +23,8 @@ public class SobreMimPagina {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuarioId;
+    @JoinColumn(name = "admin_id")
+    private Usuario adminId;
 
     @OneToOne
     @JoinColumn(name = "sobre_mim_id")
