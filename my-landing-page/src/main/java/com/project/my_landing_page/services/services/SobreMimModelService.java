@@ -1,7 +1,7 @@
-package com.project.my_landing_page.services;
+package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.SobreMimModel;
-import com.project.my_landing_page.repositories.SobreMimModelRepository;
+import com.project.my_landing_page.repositories.repositories.SobreMimModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

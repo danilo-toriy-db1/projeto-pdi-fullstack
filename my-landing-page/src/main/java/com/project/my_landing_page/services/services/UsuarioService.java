@@ -1,7 +1,8 @@
-package com.project.my_landing_page.services;
+package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.Usuario;
-import com.project.my_landing_page.repositories.UsuarioRepository;
+import com.project.my_landing_page.repositories.repositories.UsuarioRepository;
+import com.project.my_landing_page.services.DefaultServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

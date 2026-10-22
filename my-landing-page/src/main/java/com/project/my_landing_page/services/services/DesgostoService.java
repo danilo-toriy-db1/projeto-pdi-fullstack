@@ -1,7 +1,7 @@
-package com.project.my_landing_page.services;
+package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.Desgosto;
-import com.project.my_landing_page.repositories.DesgostoRepository;
+import com.project.my_landing_page.repositories.repositories.DesgostoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

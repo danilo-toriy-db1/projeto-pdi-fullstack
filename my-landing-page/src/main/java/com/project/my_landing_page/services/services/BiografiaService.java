@@ -1,7 +1,7 @@
-package com.project.my_landing_page.services;
+package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.Biografia;
-import com.project.my_landing_page.repositories.BiografiaRepository;
+import com.project.my_landing_page.repositories.repositories.BiografiaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

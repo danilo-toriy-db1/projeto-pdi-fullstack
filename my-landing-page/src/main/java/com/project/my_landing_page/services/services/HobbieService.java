@@ -1,7 +1,7 @@
-package com.project.my_landing_page.services;
+package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.Hobbie;
-import com.project.my_landing_page.repositories.HobbieRepository;
+import com.project.my_landing_page.repositories.repositories.HobbieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
