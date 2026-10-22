@@ -2,35 +2,24 @@ package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.Hobbie;
 import com.project.my_landing_page.repositories.repositories.HobbieRepository;
+import com.project.my_landing_page.services.DefaultServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
-public class HobbieService {
+public class HobbieService extends DefaultServiceImpl<Hobbie> {
 
     @Autowired
     private HobbieRepository hobbieRepository;
 
-    public Hobbie saveHobbie(Hobbie hobbie){
-        return hobbieRepository.save(hobbie);
+    public HobbieService (HobbieRepository hobbieRepository) {
+        super(hobbieRepository);
     }
 
-    public List<Hobbie> findAllHobbies(){
-        return hobbieRepository.findAll();
-    }
-
-    public Optional<Hobbie> findHobbieById(Long id){
-        return hobbieRepository.findById(id);
-    }
-
-    public void deleteByIdHobbie (Long id){
-        hobbieRepository.deleteById(id);
-    }
-
-    public Hobbie updateHobbie(Long id, Hobbie hobbie){
+    @Override
+    public Hobbie update(@PathVariable Long id, @RequestBody Hobbie hobbie){
         Hobbie existingHobbie = hobbieRepository.findById(id).orElse(null);
         if(existingHobbie == null){
             return null;

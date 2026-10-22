@@ -2,35 +2,24 @@ package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.SobreMimModel;
 import com.project.my_landing_page.repositories.repositories.SobreMimModelRepository;
+import com.project.my_landing_page.services.DefaultServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
-public class SobreMimModelService {
+public class SobreMimModelService extends DefaultServiceImpl<SobreMimModel> {
 
     @Autowired
     private SobreMimModelRepository sobreMimModelRepository;
 
-    public SobreMimModel saveSobreMimModel(SobreMimModel sobreMimModel){
-        return sobreMimModelRepository.save(sobreMimModel);
+    public SobreMimModelService (SobreMimModelRepository sobreMimModelRepository) {
+        super(sobreMimModelRepository);
     }
 
-    public List<SobreMimModel> findAllSobreMimModels(){
-        return sobreMimModelRepository.findAll();
-    }
-
-    public Optional<SobreMimModel> findSobreMimModelById(Long id){
-        return sobreMimModelRepository.findById(id);
-    }
-
-    public void deleteByIdSobreMimModel(Long id){
-        sobreMimModelRepository.deleteById(id);
-    }
-
-    public SobreMimModel updateSobreMimModel(Long id, SobreMimModel sobreMimModel){
+    @Override
+    public SobreMimModel update(@PathVariable Long id, @RequestBody SobreMimModel sobreMimModel){
         SobreMimModel existingSobreMimModel = sobreMimModelRepository.findById(id).orElse(null);
         if(existingSobreMimModel == null){
             return null;

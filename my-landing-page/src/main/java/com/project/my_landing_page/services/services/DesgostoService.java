@@ -2,35 +2,24 @@ package com.project.my_landing_page.services.services;
 
 import com.project.my_landing_page.models.Desgosto;
 import com.project.my_landing_page.repositories.repositories.DesgostoRepository;
+import com.project.my_landing_page.services.DefaultServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
-public class DesgostoService {
+public class DesgostoService extends DefaultServiceImpl<Desgosto> {
 
     @Autowired
     private DesgostoRepository desgostoRepository;
 
-    public Desgosto saveDesgosto(Desgosto desgosto){
-        return desgostoRepository.save(desgosto);
+    public DesgostoService (DesgostoRepository desgostoRepository) {
+        super(desgostoRepository);
     }
 
-    public List<Desgosto> findAllDesgostos(){
-        return desgostoRepository.findAll();
-    }
-
-    public Optional<Desgosto> findDesgostoById(Long id){
-        return desgostoRepository.findById(id);
-    }
-
-    public void deleteByIdDesgosto(Long id){
-        desgostoRepository.deleteById(id);
-    }
-
-    public Desgosto updateDesgosto(Long id, Desgosto desgosto){
+    @Override
+    public Desgosto update(@PathVariable Long id, @RequestBody Desgosto desgosto){
         Desgosto existingDesgosto = desgostoRepository.findById(id).orElse(null);
         if (existingDesgosto == null){
             return null;

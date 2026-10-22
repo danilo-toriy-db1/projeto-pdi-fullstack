@@ -5,6 +5,8 @@ import com.project.my_landing_page.repositories.repositories.UsuarioRepository;
 import com.project.my_landing_page.services.DefaultServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class UsuarioService extends DefaultServiceImpl<Usuario> {
@@ -17,7 +19,7 @@ public class UsuarioService extends DefaultServiceImpl<Usuario> {
     }
 
     @Override
-    public Usuario update(Long id, Usuario usuario){
+    public Usuario update(@PathVariable Long id, @RequestBody Usuario usuario){
         Usuario existingUsuario = usuarioRepository.findById(id).orElse(null);
         if(existingUsuario == null){
             return null;
