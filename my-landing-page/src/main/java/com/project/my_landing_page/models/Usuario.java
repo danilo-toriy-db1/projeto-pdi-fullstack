@@ -8,13 +8,12 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -28,7 +27,7 @@ public class Usuario {
     private long id;
     private String usuario;
     private String senha;
-    private Timestamp data_cadastro;
+    private LocalDateTime data_cadastro;
     @Enumerated(EnumType.STRING)
     private UsersRoles role;
 }

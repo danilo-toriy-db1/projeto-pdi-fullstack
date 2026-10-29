@@ -1,6 +1,6 @@
 package com.project.my_landing_page.controllers.controllers;
 
-import com.project.my_landing_page.DTOs.BiografiaDTO;
+import com.project.my_landing_page.http.DTOs.BiografiaDTO;
 import com.project.my_landing_page.controllers.DefaultCrudControllerImpl;
 import com.project.my_landing_page.models.Biografia;
 import com.project.my_landing_page.services.services.BiografiaService;

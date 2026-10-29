@@ -1,6 +1,6 @@
 package com.project.my_landing_page.controllers.controllers;
 
-import com.project.my_landing_page.DTOs.HobbieDTO;
+import com.project.my_landing_page.http.DTOs.HobbieDTO;
 import com.project.my_landing_page.controllers.DefaultCrudControllerImpl;
 import com.project.my_landing_page.models.Hobbie;
 import org.springframework.web.bind.annotation.RequestMapping;

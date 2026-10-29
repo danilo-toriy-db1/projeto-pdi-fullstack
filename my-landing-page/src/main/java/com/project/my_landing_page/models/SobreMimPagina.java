@@ -1,5 +1,6 @@
 package com.project.my_landing_page.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,26 +24,26 @@ public class SobreMimPagina {
     private long id;
 
     @OneToOne
-    @JoinColumn(name = "admin_id")
-    private Usuario adminId;
+    @JoinColumn(name = "admin_id", unique = true)
+    private Usuario admin;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "sobre_mim_id")
     private SobreMimModel sobreMimModel;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "biografia_id")
     private Biografia biografia;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "desgosto_id")
     private Desgosto desgosto;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "hobbie_id")
     private Hobbie hobbie;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "objetivo_id")
     private Objetivo objetivo;
 }

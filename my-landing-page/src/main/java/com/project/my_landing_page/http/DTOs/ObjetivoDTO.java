@@ -1,4 +1,4 @@
-package com.project.my_landing_page.DTOs;
+package com.project.my_landing_page.http.DTOs;
 
 import com.project.my_landing_page.models.Objetivo;
 

@@ -1,6 +1,6 @@
 package com.project.my_landing_page.controllers.controllers;
 
-import com.project.my_landing_page.DTOs.ObjetivoDTO;
+import com.project.my_landing_page.http.DTOs.ObjetivoDTO;
 import com.project.my_landing_page.controllers.DefaultCrudControllerImpl;
 import com.project.my_landing_page.models.Objetivo;
 import com.project.my_landing_page.services.services.ObjetivoService;

@@ -1,6 +1,6 @@
 package com.project.my_landing_page.controllers.controllers;
 
-import com.project.my_landing_page.DTOs.DesgostoDTO;
+import com.project.my_landing_page.http.DTOs.DesgostoDTO;
 import com.project.my_landing_page.controllers.DefaultCrudControllerImpl;
 import com.project.my_landing_page.models.Desgosto;
 import com.project.my_landing_page.services.services.DesgostoService;
