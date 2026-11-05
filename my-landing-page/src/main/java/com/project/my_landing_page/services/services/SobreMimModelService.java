@@ -5,8 +5,6 @@ import com.project.my_landing_page.repositories.repositories.SobreMimModelReposi
 import com.project.my_landing_page.services.DefaultServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class SobreMimModelService extends DefaultServiceImpl<SobreMimModel> {
@@ -19,7 +17,7 @@ public class SobreMimModelService extends DefaultServiceImpl<SobreMimModel> {
     }
 
     @Override
-    public SobreMimModel update(@PathVariable Long id, @RequestBody SobreMimModel sobreMimModel){
+    public SobreMimModel update(Long id, SobreMimModel sobreMimModel){
         SobreMimModel existingSobreMimModel = sobreMimModelRepository.findById(id).orElse(null);
         if(existingSobreMimModel == null){
             return null;

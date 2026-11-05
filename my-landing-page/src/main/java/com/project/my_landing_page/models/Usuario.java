@@ -8,12 +8,17 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -30,4 +35,12 @@ public class Usuario {
     private LocalDateTime data_cadastro;
     @Enumerated(EnumType.STRING)
     private UsersRoles role;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tpl_habilidade_admin",
+            joinColumns = @JoinColumn(name = "admin_id"),
+            inverseJoinColumns = @JoinColumn(name = "habilidade_id")
+    )
+    private Set<Habilidade> habilidades = new HashSet<>();
 }

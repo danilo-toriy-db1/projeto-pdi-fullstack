@@ -5,8 +5,6 @@ import com.project.my_landing_page.repositories.repositories.HobbieRepository;
 import com.project.my_landing_page.services.DefaultServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class HobbieService extends DefaultServiceImpl<Hobbie> {
@@ -19,7 +17,7 @@ public class HobbieService extends DefaultServiceImpl<Hobbie> {
     }
 
     @Override
-    public Hobbie update(@PathVariable Long id, @RequestBody Hobbie hobbie){
+    public Hobbie update(Long id, Hobbie hobbie){
         Hobbie existingHobbie = hobbieRepository.findById(id).orElse(null);
         if(existingHobbie == null){
             return null;

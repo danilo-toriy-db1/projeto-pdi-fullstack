@@ -1,6 +1,5 @@
 package com.project.my_landing_page.controllers;
 
-import com.project.my_landing_page.http.converters.SobreMimPaginaConverter;
 import com.project.my_landing_page.http.request.SobreMimPaginaRequest;
 import com.project.my_landing_page.http.response.SobreMimPaginaResponse;
 import com.project.my_landing_page.services.services.SobreMimPaginaService;
@@ -23,14 +22,11 @@ public class SobreMimPaginaController {
     @Autowired
     private SobreMimPaginaService sobreMimPaginaService;
 
-    @Autowired
-    private SobreMimPaginaConverter converter;
-
     @PostMapping("/cadastrar/{id}")
     public ResponseEntity<SobreMimPaginaResponse> cadastrarNovaPagina(@PathVariable Long id, @RequestBody SobreMimPaginaRequest sobreMimPaginaRequest) {
         SobreMimPaginaResponse resposta = sobreMimPaginaService.criarPagina(id, sobreMimPaginaRequest);
-        URI location = URI.create("/api/usuarios/" + resposta.getId());
-        return ResponseEntity.created(location).body(converter.toResponse(resposta));
+        URI location = URI.create("/api/paginas/" + resposta.id());
+        return ResponseEntity.created(location).body(resposta);
     }
 
     @GetMapping
