@@ -21,7 +21,7 @@ public class Habilidade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String habilidade;
     @Enumerated(EnumType.STRING)
     private HabilidadesTipo tipo;
