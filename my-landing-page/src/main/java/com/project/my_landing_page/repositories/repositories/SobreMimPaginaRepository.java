@@ -16,4 +16,9 @@ public interface SobreMimPaginaRepository extends DefaultRepository<SobreMimPagi
     @Override
     @EntityGraph(attributePaths = {"admin", "admin.habilidades", "sobreMimModel", "biografia", "objetivo", "desgosto", "hobbie"})
     List<SobreMimPagina> findAll();
+
+    @Override
+    @EntityGraph(attributePaths = {"admin", "admin.habilidades", "sobreMimModel", "biografia", "objetivo", "desgosto", "hobbie"})
+    Optional<SobreMimPagina> findById(Long id);
+
 }

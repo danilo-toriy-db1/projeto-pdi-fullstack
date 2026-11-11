@@ -1,7 +1,6 @@
-package com.project.my_landing_page.controllers.controllers;
+package com.project.my_landing_page.controllers;
 
 import com.project.my_landing_page.http.DTOs.SobreMimModelDTO;
-import com.project.my_landing_page.controllers.DefaultCrudControllerImpl;
 import com.project.my_landing_page.models.SobreMimModel;
 import com.project.my_landing_page.services.services.SobreMimModelService;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,5 @@
-package com.project.my_landing_page.controllers.controllers;
+package com.project.my_landing_page.controllers;
 
-import com.project.my_landing_page.controllers.DefaultCrudControllerImpl;
 import com.project.my_landing_page.http.DTOs.HabilidadeDTO;
 import com.project.my_landing_page.models.Habilidade;
 import com.project.my_landing_page.services.services.HabilidadeService;

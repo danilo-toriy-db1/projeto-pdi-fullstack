@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SobreMimPaginaService {
@@ -52,6 +53,12 @@ public class SobreMimPaginaService {
         SobreMimPagina pagina = converter.toEntity(request, admin);
         SobreMimPagina salvo = sobreMimPaginaRepository.save(pagina);
         return converter.toResponse(salvo);
+    }
+
+    @Transactional
+    public Optional<SobreMimPaginaResponse> buscarPaginaPorId(Long id) {
+        return sobreMimPaginaRepository.findById(id)
+                .map(converter::toResponse);
     }
 
     @Transactional

@@ -34,4 +34,10 @@ public class SobreMimPaginaController {
         return ResponseEntity.ok(sobreMimPaginaService.listarPaginas());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<SobreMimPaginaResponse> buscarPaginaPorId(@PathVariable Long id) {
+        return sobreMimPaginaService.buscarPaginaPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }

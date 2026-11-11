@@ -1,4 +1,4 @@
-package com.project.my_landing_page.controllers.controllers;
+package com.project.my_landing_page.controllers;
 
 import com.project.my_landing_page.http.converters.UsuarioConverter;
 import com.project.my_landing_page.http.request.UsuarioRequest;
