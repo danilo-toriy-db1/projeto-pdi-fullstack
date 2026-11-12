@@ -2,6 +2,7 @@ package com.project.my_landing_page.models;
 
 
 import com.project.my_landing_page.models.enums.UsersRoles;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -29,7 +30,8 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+    @Column(unique = true)
     private String usuario;
     private String senha;
     private LocalDateTime data_cadastro;

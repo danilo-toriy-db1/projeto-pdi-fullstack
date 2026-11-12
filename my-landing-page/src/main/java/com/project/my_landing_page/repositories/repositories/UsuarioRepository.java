@@ -10,4 +10,6 @@ public interface UsuarioRepository extends DefaultRepository<Usuario> {
 
     @EntityGraph(attributePaths = "habilidades")
     Optional<Usuario> findWithHabilidadesById(Long id);
+
+    Optional<Usuario> findByUsuario(String usuario);
 }

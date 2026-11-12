@@ -12,6 +12,7 @@ import com.project.my_landing_page.repositories.repositories.SobreMimPaginaRepos
 import com.project.my_landing_page.repositories.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
@@ -68,6 +69,21 @@ public class SobreMimPaginaService {
                 .toList();
     }
 
+    @Transactional
+    public SobreMimPaginaResponse atualizarPagina(Long id, SobreMimPaginaRequest req, Long usuarioId, boolean isSuper) {
+        SobreMimPagina pagina = buscarPaginaComPermissao(id, usuarioId, isSuper);
+        converter.updateEntity(pagina, req);
+
+        associarHabilidades(pagina.getAdmin(), req.habilidades());
+        return converter.toResponse(pagina);
+    }
+
+    @Transactional
+    public void deletarPagina(Long id, Long usuarioId, boolean isSuper) {
+        SobreMimPagina pagina = buscarPaginaComPermissao(id, usuarioId, isSuper);
+        sobreMimPaginaRepository.delete(pagina);
+    }
+
     private void associarHabilidades(Usuario admin, List<HabilidadeDTO> habilidades) {
         if (habilidades == null) {
             return;
@@ -81,4 +97,16 @@ public class SobreMimPaginaService {
                         ))
         ));
     }
+
+    private SobreMimPagina buscarPaginaComPermissao(Long paginaId, Long usuarioId, boolean isSuper) {
+        SobreMimPagina pagina = sobreMimPaginaRepository.findById(paginaId)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Página não encontrada"));
+
+        if (!isSuper && !pagina.getAdmin().getId().equals(usuarioId)) {
+            throw new AccessDeniedException("Você não tem permissão para alterar esta página");
+        }
+
+        return pagina;
+    }
+
 }
