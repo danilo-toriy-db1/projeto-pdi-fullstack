@@ -26,8 +26,6 @@ public class SobreMimPaginaController {
     @Autowired
     private SobreMimPaginaService sobreMimPaginaService;
 
-
-
     @PostMapping("/cadastrar/{id}")
     public ResponseEntity<SobreMimPaginaResponse> cadastrarNovaPagina(@PathVariable Long id, @RequestBody SobreMimPaginaRequest sobreMimPaginaRequest) {
         SobreMimPaginaResponse resposta = sobreMimPaginaService.criarPagina(id, sobreMimPaginaRequest);
