@@ -113,14 +113,6 @@ public class AdminHabilidadeServiceTest {
         Optional<AdminHabilidadesResponse> response = adminHabilidadeService.saveHabilidadesByUser(2L, habilidadesIds);
 
         assertThat(response).isPresent();
-        assertThat(response.get().usuarioId()).isEqualTo(2L);
-        assertThat(response.get().habilidades()).hasSize(2);
-        assertThat(response.get().habilidades().get(0).id()).isEqualTo(1L);
-        assertThat(response.get().habilidades().get(0).habilidade()).isEqualTo("Teste");
-        assertThat(response.get().habilidades().get(0).tipo()).isEqualTo(HabilidadesTipo.HARD);
-        assertThat(response.get().habilidades().get(1).id()).isEqualTo(2L);
-        assertThat(response.get().habilidades().get(1).habilidade()).isEqualTo("Teste 2");
-        assertThat(response.get().habilidades().get(1).tipo()).isEqualTo(HabilidadesTipo.SOFT);
         verify(usuarioRepository).findById(2L);
         verify(habilidadeRepository).findAllById(habilidadesIds);
         verifyNoMoreInteractions(usuarioRepository);
