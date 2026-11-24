@@ -3,17 +3,16 @@ package com.project.my_landing_page.services.services;
 import com.project.my_landing_page.models.Biografia;
 import com.project.my_landing_page.repositories.repositories.BiografiaRepository;
 import com.project.my_landing_page.services.DefaultServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BiografiaService extends DefaultServiceImpl<Biografia> {
 
-    @Autowired
-    private BiografiaRepository biografiaRepository;
+    private final BiografiaRepository biografiaRepository;
 
     public BiografiaService (BiografiaRepository biografiaRepository) {
         super(biografiaRepository);
+        this.biografiaRepository = biografiaRepository;
     }
 
     @Override

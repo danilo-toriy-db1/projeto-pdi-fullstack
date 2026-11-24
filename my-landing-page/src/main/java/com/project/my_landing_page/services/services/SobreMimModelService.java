@@ -3,17 +3,16 @@ package com.project.my_landing_page.services.services;
 import com.project.my_landing_page.models.SobreMimModel;
 import com.project.my_landing_page.repositories.repositories.SobreMimModelRepository;
 import com.project.my_landing_page.services.DefaultServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SobreMimModelService extends DefaultServiceImpl<SobreMimModel> {
 
-    @Autowired
-    private SobreMimModelRepository sobreMimModelRepository;
+    private final SobreMimModelRepository sobreMimModelRepository;
 
     public SobreMimModelService (SobreMimModelRepository sobreMimModelRepository) {
         super(sobreMimModelRepository);
+        this.sobreMimModelRepository = sobreMimModelRepository;
     }
 
     @Override

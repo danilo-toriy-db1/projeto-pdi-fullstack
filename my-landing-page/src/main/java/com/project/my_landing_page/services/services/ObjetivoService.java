@@ -3,17 +3,16 @@ package com.project.my_landing_page.services.services;
 import com.project.my_landing_page.models.Objetivo;
 import com.project.my_landing_page.repositories.repositories.ObjetivoRepository;
 import com.project.my_landing_page.services.DefaultServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ObjetivoService extends DefaultServiceImpl<Objetivo> {
 
-    @Autowired
-    private ObjetivoRepository objetivoRepository;
+    private final ObjetivoRepository objetivoRepository;
 
     public ObjetivoService (ObjetivoRepository objetivoRepository) {
         super(objetivoRepository);
+        this.objetivoRepository = objetivoRepository;
     }
 
     @Override

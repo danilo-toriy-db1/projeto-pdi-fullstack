@@ -3,17 +3,16 @@ package com.project.my_landing_page.services.services;
 import com.project.my_landing_page.models.Habilidade;
 import com.project.my_landing_page.repositories.repositories.HabilidadeRepository;
 import com.project.my_landing_page.services.DefaultServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class HabilidadeService extends DefaultServiceImpl<Habilidade> {
 
-    @Autowired
-    private HabilidadeRepository habilidadeRepository;
+    private final HabilidadeRepository habilidadeRepository;
 
     public HabilidadeService(HabilidadeRepository repository) {
         super(repository);
+        this.habilidadeRepository = repository;
     }
 
     @Override

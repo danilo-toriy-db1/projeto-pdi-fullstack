@@ -3,21 +3,20 @@ package com.project.my_landing_page.services.services;
 import com.project.my_landing_page.models.Usuario;
 import com.project.my_landing_page.repositories.repositories.UsuarioRepository;
 import com.project.my_landing_page.services.DefaultServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioService extends DefaultServiceImpl<Usuario> {
 
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
     private UsuarioRepository usuarioRepository;
 
-    protected UsuarioService(UsuarioRepository repository) {
+    protected UsuarioService(UsuarioRepository repository, PasswordEncoder passwordEncoder) {
         super(repository);
+        this.passwordEncoder = passwordEncoder;
+        this.usuarioRepository = repository;
     }
 
     @Override
@@ -25,7 +24,6 @@ public class UsuarioService extends DefaultServiceImpl<Usuario> {
         usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
         return super.save(usuario);
     }
-
 
     @Override
     public Usuario update(Long id, Usuario usuario){
